@@ -1,7 +1,21 @@
+import { useEffect } from "react";
+import { useRef } from "react";
 import Menu from "./Menu";
 export default function Navbar(props) {
+  console.log(window.scrollY);
+  const navBack = useRef(null);
+  useEffect(() => {
+    window.onscroll = function () {
+      if (window.scrollY >= 100) {
+        navBack.current.classList.add("bg-slate-600/50");
+      }
+      if (window.scrollY < 100) {
+        navBack.current.classList.remove("bg-slate-600/50");
+      }
+    };
+  });
   return (
-    <nav className="grid grid-cols-3 md:flex md:justify-start items-start md:pt-20  fixed justify-between gap-10 right-0 left-0 pt-16 ">
+    <nav ref={navBack} className="grid grid-cols-3 md:flex md:justify-start items-start md:pt-20 pb-10 z-50 fixed justify-between gap-10 right-0 left-0 pt-16 ">
       <input className="peer hidden" type="checkbox" id="navbar" />
       <div className="pl-10">
         <label htmlFor="navbar" className="md:hidden cursor-pointer">
@@ -14,7 +28,7 @@ export default function Navbar(props) {
         </a>
       </div>
 
-      <div className="flex  h-0 md:h-fit md:peer-checked:h-fit md:opacity-100  md:static md:bg-transparent peer-checked:h-32 peer-checked:opacity-100  transition-opacity ease-in duration-300     gap-10 opacity-0   items-center justify-between fixed left-0 top-0 right-0 px-8 bg-white ">
+      <div className="flex  h-0 md:h-fit md:peer-checked:h-fit md:opacity-100  md:static md:bg-transparent peer-checked:h-32 peer-checked:opacity-100  transition-opacity ease-in duration-300   gap-10 opacity-0   items-center justify-between fixed left-0 top-0 right-0 px-8 bg-white ">
         <label htmlFor="navbar" className=" min-w-fit  md:hidden cursor-pointer">
           <img src="/images/icon-close.svg" alt="close-icon" className="pointer" />
         </label>

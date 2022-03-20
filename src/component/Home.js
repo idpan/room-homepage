@@ -3,7 +3,7 @@ export default function Home(props) {
   return (
     <div id="home" className="lg:grid lg:grid-cols-5  justify-between  ">
       <img src={props.image} alt="hero-image" className=" lg:col-span-3 object-cover  h-full w-full min-w-0" />
-      <div className="absolute right-0 -mt-16 lg:hidden">
+      <div className=" absolute right-0 -mt-16 lg:hidden">
         <ButtonAngle onClick={props.leftArrow}>
           <img src="/images/icon-angle-left.svg" alt="left" />
         </ButtonAngle>
